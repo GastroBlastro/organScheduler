@@ -55,7 +55,7 @@
             this.calender.Name = "calender";
             this.calender.ShowWeekNumbers = true;
             this.calender.TabIndex = 0;
-            this.calender.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.calender.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.calender_DateSelected);
             // 
             // logoLabel
             // 
@@ -204,6 +204,7 @@
             this.Controls.Add(this.addEditPlacementLabel);
             this.Name = "Form1";
             this.Text = "Organ-izer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.Form1_ControlRemoved);
             this.ResumeLayout(false);
             this.PerformLayout();

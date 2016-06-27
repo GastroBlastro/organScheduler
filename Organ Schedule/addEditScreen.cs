@@ -35,7 +35,8 @@ namespace Organ_Schedule
             service service = new service(f.church, f.prelude, f.offertory, f.postlude, f.selectionRange, f.hymns, f.other);
             f.services.Add(service);
 
-            f.Controls.Remove(this);
+            Form f2 = this.FindForm();
+            f2.Controls.Remove(this);
         }
 
         private void otherAddButton_Click(object sender, EventArgs e)

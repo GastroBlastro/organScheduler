@@ -18,20 +18,64 @@ namespace Organ_Schedule
         public Form1()
         {
             InitializeComponent();
+            loadCalender();
         }
 
-        public string church, prelude, offertory, postlude, selectionRange;
+        public string church, prelude, offertory, postlude;
+        public SelectionRange selectionRange;
 
-        public List<string> hymns, other;
-        public List<service> services;
+        public List<string> hymns = new List<string>();
+        public List<string> other = new List<string>();
+        public List<service> services = new List<service>();
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        private void calender_DateSelected(object sender, DateRangeEventArgs e)
         {
-            selectionRange = calender.SelectionRange.ToString();
-            addEditScreen aes = new addEditScreen();
-            this.Controls.Add(aes);
-            aes.Location = new Point(addEditPlacementLabel.Location.X, addEditPlacementLabel.Location.Y);
-            aes.BringToFront();
+            foreach (service service in services)
+            {
+                if (calender.SelectionRange == service.selectionRange)
+                {
+                    churchLabel.Text = church = service.church; preLabel.Text = prelude = service.prelude;
+                    offLabel.Text = offertory = service.offertory; postLabel.Text = postlude = service.postlude;
+
+                    foreach (string hymn in hymns = service.hymns)
+                    {
+                        hymnList.Items.Add(hymn);
+                    }
+
+                    foreach (string thing in other = service.other)
+                    {
+                        otherList.Items.Add(thing);
+                    }
+
+                    break;
+                }
+                else if (services == null)
+                {
+                    addEditScreen aes = new addEditScreen();
+                    Controls.Add(aes);
+                    aes.Location = new Point(addEditPlacementLabel.Location.X, addEditPlacementLabel.Location.Y);
+                    aes.BringToFront();
+                }
+            }
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Would you like to save the current Organ-izer?/nAll changes will be lost otherwise.", "Closing Program", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                writeCalender();
+            }
+            else if (result == DialogResult.No)
+            {
+                
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+            
         }
 
         private void Form1_ControlRemoved(object sender, ControlEventArgs e)
@@ -48,6 +92,9 @@ namespace Organ_Schedule
             {
                 otherList.Items.Add(thing);
             }
+
+            Focus();
+            BringToFront();
         }
 
         void writeCalender()
@@ -68,7 +115,7 @@ namespace Organ_Schedule
                 writer.WriteElementString("Prelude", services[i].prelude);
                 writer.WriteElementString("Offertory", services[i].offertory);
                 writer.WriteElementString("Postlude", services[i].postlude);
-                writer.WriteElementString("SelectionRange", services[i].selectionRange);
+                writer.WriteElementString("SelectionRange", services[i].selectionRange.ToString());
 
                 int h = 0;
                 int o = 0;
@@ -95,6 +142,11 @@ namespace Organ_Schedule
 
             //close the writer
             writer.Close();
+        }
+
+        void loadCalender()
+        {
+
         }
     }
 }
