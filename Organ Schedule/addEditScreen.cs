@@ -44,5 +44,17 @@ namespace Organ_Schedule
             f.other.Add(otherBox.Text);
             otherBox.Clear();
         }
+
+        private void hymnRemoveButton_Click(object sender, EventArgs e)
+        {
+            f.hymns.RemoveAt(f.hymns.IndexOf(hymnAddList.SelectedItem.ToString()));
+            hymnAddList.Items.Remove(hymnAddList.SelectedItem);
+        }
+
+        private void otherRemoveButton_Click(object sender, EventArgs e)
+        {
+            f.other.RemoveAt(f.other.IndexOf(otherAddList.SelectedItem.ToString()));
+            otherAddList.Items.Remove(otherAddList.SelectedItem);
+        }
     }
 }

@@ -33,7 +33,6 @@
             this.churchLabel = new System.Windows.Forms.Label();
             this.hymnAddLabel = new System.Windows.Forms.Label();
             this.hymnBox = new System.Windows.Forms.TextBox();
-            this.hymnAddList = new System.Windows.Forms.ListView();
             this.hymnAddButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.preludeBox = new System.Windows.Forms.TextBox();
@@ -42,10 +41,13 @@
             this.postludeBox = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.otherAddButton = new System.Windows.Forms.Button();
-            this.otherAddList = new System.Windows.Forms.ListView();
             this.otherAddLabel = new System.Windows.Forms.Label();
             this.otherBox = new System.Windows.Forms.TextBox();
             this.finishButton = new System.Windows.Forms.Button();
+            this.hymnRemoveButton = new System.Windows.Forms.Button();
+            this.hymnAddList = new System.Windows.Forms.ListBox();
+            this.otherAddList = new System.Windows.Forms.ListBox();
+            this.otherRemoveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainLabel
@@ -91,17 +93,9 @@
             this.hymnBox.Size = new System.Drawing.Size(100, 20);
             this.hymnBox.TabIndex = 3;
             // 
-            // hymnAddList
-            // 
-            this.hymnAddList.Location = new System.Drawing.Point(22, 176);
-            this.hymnAddList.Name = "hymnAddList";
-            this.hymnAddList.Size = new System.Drawing.Size(150, 33);
-            this.hymnAddList.TabIndex = 5;
-            this.hymnAddList.UseCompatibleStateImageBehavior = false;
-            // 
             // hymnAddButton
             // 
-            this.hymnAddButton.Location = new System.Drawing.Point(57, 144);
+            this.hymnAddButton.Location = new System.Drawing.Point(13, 144);
             this.hymnAddButton.Name = "hymnAddButton";
             this.hymnAddButton.Size = new System.Drawing.Size(75, 23);
             this.hymnAddButton.TabIndex = 6;
@@ -159,21 +153,13 @@
             // 
             // otherAddButton
             // 
-            this.otherAddButton.Location = new System.Drawing.Point(57, 355);
+            this.otherAddButton.Location = new System.Drawing.Point(13, 355);
             this.otherAddButton.Name = "otherAddButton";
             this.otherAddButton.Size = new System.Drawing.Size(75, 23);
             this.otherAddButton.TabIndex = 16;
             this.otherAddButton.Text = "Add";
             this.otherAddButton.UseVisualStyleBackColor = true;
             this.otherAddButton.Click += new System.EventHandler(this.otherAddButton_Click);
-            // 
-            // otherAddList
-            // 
-            this.otherAddList.Location = new System.Drawing.Point(22, 387);
-            this.otherAddList.Name = "otherAddList";
-            this.otherAddList.Size = new System.Drawing.Size(150, 33);
-            this.otherAddList.TabIndex = 15;
-            this.otherAddList.UseCompatibleStateImageBehavior = false;
             // 
             // otherAddLabel
             // 
@@ -193,7 +179,7 @@
             // 
             // finishButton
             // 
-            this.finishButton.Location = new System.Drawing.Point(57, 426);
+            this.finishButton.Location = new System.Drawing.Point(57, 432);
             this.finishButton.Name = "finishButton";
             this.finishButton.Size = new System.Drawing.Size(75, 23);
             this.finishButton.TabIndex = 17;
@@ -201,13 +187,52 @@
             this.finishButton.UseVisualStyleBackColor = true;
             this.finishButton.Click += new System.EventHandler(this.finishButton_Click);
             // 
+            // hymnRemoveButton
+            // 
+            this.hymnRemoveButton.Location = new System.Drawing.Point(108, 144);
+            this.hymnRemoveButton.Name = "hymnRemoveButton";
+            this.hymnRemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.hymnRemoveButton.TabIndex = 18;
+            this.hymnRemoveButton.Text = "Remove";
+            this.hymnRemoveButton.UseVisualStyleBackColor = true;
+            this.hymnRemoveButton.Click += new System.EventHandler(this.hymnRemoveButton_Click);
+            // 
+            // hymnAddList
+            // 
+            this.hymnAddList.FormattingEnabled = true;
+            this.hymnAddList.Location = new System.Drawing.Point(22, 173);
+            this.hymnAddList.Name = "hymnAddList";
+            this.hymnAddList.Size = new System.Drawing.Size(150, 43);
+            this.hymnAddList.TabIndex = 19;
+            // 
+            // otherAddList
+            // 
+            this.otherAddList.FormattingEnabled = true;
+            this.otherAddList.Location = new System.Drawing.Point(20, 383);
+            this.otherAddList.Name = "otherAddList";
+            this.otherAddList.Size = new System.Drawing.Size(150, 43);
+            this.otherAddList.TabIndex = 20;
+            // 
+            // otherRemoveButton
+            // 
+            this.otherRemoveButton.Location = new System.Drawing.Point(108, 355);
+            this.otherRemoveButton.Name = "otherRemoveButton";
+            this.otherRemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.otherRemoveButton.TabIndex = 21;
+            this.otherRemoveButton.Text = "Remove";
+            this.otherRemoveButton.UseVisualStyleBackColor = true;
+            this.otherRemoveButton.Click += new System.EventHandler(this.otherRemoveButton_Click);
+            // 
             // addEditScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.otherRemoveButton);
+            this.Controls.Add(this.otherAddList);
+            this.Controls.Add(this.hymnAddList);
+            this.Controls.Add(this.hymnRemoveButton);
             this.Controls.Add(this.finishButton);
             this.Controls.Add(this.otherAddButton);
-            this.Controls.Add(this.otherAddList);
             this.Controls.Add(this.otherAddLabel);
             this.Controls.Add(this.otherBox);
             this.Controls.Add(this.postludeBox);
@@ -217,7 +242,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.preludeBox);
             this.Controls.Add(this.hymnAddButton);
-            this.Controls.Add(this.hymnAddList);
             this.Controls.Add(this.hymnAddLabel);
             this.Controls.Add(this.hymnBox);
             this.Controls.Add(this.churchLabel);
@@ -236,7 +260,6 @@
         private System.Windows.Forms.TextBox churchBox;
         private System.Windows.Forms.Label churchLabel;
         private System.Windows.Forms.Label hymnAddLabel;
-        private System.Windows.Forms.ListView hymnAddList;
         private System.Windows.Forms.Button hymnAddButton;
         private System.Windows.Forms.TextBox hymnBox;
         private System.Windows.Forms.Label label1;
@@ -246,9 +269,12 @@
         private System.Windows.Forms.Label postludeBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button otherAddButton;
-        private System.Windows.Forms.ListView otherAddList;
         private System.Windows.Forms.Label otherAddLabel;
         private System.Windows.Forms.TextBox otherBox;
         private System.Windows.Forms.Button finishButton;
+        private System.Windows.Forms.Button hymnRemoveButton;
+        private System.Windows.Forms.ListBox hymnAddList;
+        private System.Windows.Forms.ListBox otherAddList;
+        private System.Windows.Forms.Button otherRemoveButton;
     }
 }

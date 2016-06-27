@@ -13,7 +13,13 @@ namespace Organ_Schedule
 
         public service(string _church, string _prelude, string _offertory, string _postlude, string _selectionRange, List<string> _hymns, List<string> _other)
         {
-
+            church = _church;
+            prelude = _prelude;
+            offertory = _offertory;
+            postlude = _postlude;
+            selectionRange = _selectionRange;
+            hymns = _hymns;
+            other = _other;
         }
     }
 }
